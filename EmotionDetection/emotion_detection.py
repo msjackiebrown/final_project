@@ -7,4 +7,4 @@ def emotion_detector(text_to_analyze):
     response = requests.post(url,json=myobj,headers=headers)
     formatted_response = json.loads(response.text)
     emotionPredictions = (formatted_response['emotionPredictions'])
-    print (emotionPredictions[0]['emotion'])
+    return emotionPredictions[0]['emotion']

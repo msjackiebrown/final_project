@@ -14,11 +14,11 @@ def emotion_dection():
     This function analyzes emotion vis text
     """
     response = emotion_detector(request.args.get("textToAnalyze"))
-    dominant_emotion = max(response, key=response.get)
-    if dominant_emotion is None:
+    emotion = max(response, key=response.get)
+    if emotion is None:
         return "Invalid text! Please try again!"
-    formatted_response = "For the given statement, the system response is {}. The dominant emotion is {}.".format(response,dominant_emotion)
-    return formatted_response
+    return (f"For the given statement, the system response is {response}.\n"
+        f"The dominant emotion is {emotion}")
 
 
 @app.route("/")

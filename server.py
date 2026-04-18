@@ -7,6 +7,8 @@ app = Flask("Emotion  Detector")
 def emotion_dection():
     response = emotion_detector(request.args.get("textToAnalyze"))
     dominant_emotion = max(response, key=response.get)
+    if dominant_emotion == None:
+         return "Invalid text! Please try again!"
     return "For the given statement, the system response is {}. The dominant emotion is {}.".format(response,dominant_emotion)
 
 @app.route("/")
